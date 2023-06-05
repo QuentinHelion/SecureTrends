@@ -3,7 +3,7 @@ Main app file, all api route are declared there
 """
 from flask import Flask, jsonify
 from flask_cors import CORS
-from application.interfaces.presenters.rsspresenter import RSSPresenter
+from application.use_cases.krebon_sec import KrebonSec
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost"]}})
@@ -24,9 +24,10 @@ def rss():
     """
     Return rss feed title
     """
-    presenter = RSSPresenter("https://krebsonsecurity.com/feed/")
+    use_case = KrebonSec()
     return jsonify({
-        "title": presenter.get_feed_title()
+        "title": use_case.get_title(),
+        "entries": use_case.get_feed()
     })
 
 
