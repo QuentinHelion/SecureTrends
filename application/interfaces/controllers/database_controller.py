@@ -60,3 +60,19 @@ class DatabaseController:
         )
         self.db_presenter.disconnect()
         return result
+
+    def get_articles(self, interval=1, platform='%'):
+        """
+        :param interval: day range of feed
+        :param platform: platform for feed
+        :return: articles list
+        """
+        self.db_presenter.connect()
+        result = self.db_presenter.execute_query(
+            f"SELECT title, platform, link, summary, date FROM ARTICLES "
+            f"WHERE platform LIKE '{platform}' AND date "
+            f"BETWEEN DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL {interval} DAY) "
+            f"AND CURRENT_TIMESTAMP()"
+        )
+        self.db_presenter.disconnect()
+        return result
