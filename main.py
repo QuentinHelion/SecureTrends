@@ -8,6 +8,7 @@ from application.use_cases.dark_reading import DarkReading
 from application.use_cases.hacker_news import HackerNews
 from application.use_cases.threat_post import ThreatPost
 from application.use_cases.security_week import SecurityWeek
+from application.use_cases.save_article import SaveArticle
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost"]}})
@@ -20,6 +21,36 @@ def ping():
     """
     return jsonify({
         "result": "pong"
+    })
+
+
+@app.route('/test', methods=['GET'])
+def test():
+    """
+    Return rss feed title
+    """
+    use_case = SaveArticle()
+    return jsonify({
+        "result": use_case.save({
+            "title": "t_title_4",
+            "platform": "t_platform",
+            "link": "t_link",
+            "summary": "t_summary"
+        })
+    })
+
+
+@app.route('/rm', methods=['GET'])
+def remove_article():
+    """
+    Return rss feed title
+    """
+    use_case = SaveArticle()
+    return jsonify({
+        "result": use_case.remove({
+            "title": "t_title_4",
+            "platform": "t_platform"
+        })
     })
 
 
