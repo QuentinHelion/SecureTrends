@@ -1,17 +1,17 @@
 """
-Krebon security rss feed
+Dark Reading rss feed
 """
 
 from application.interfaces.presenters.rsspresenter import RSSPresenter
 
 
-class KrebonSec:
+class DarkReading:
     """
-    KrebonSec usage class
+    DarkReading usage class
     """
 
     def __init__(self):
-        self.presenter = RSSPresenter("https://krebsonsecurity.com/feed/")
+        self.presenter = RSSPresenter("https://www.darkreading.com/rss.xml")
 
     def get_title(self):
         """

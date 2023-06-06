@@ -1,17 +1,17 @@
 """
-Krebon security rss feed
+Cisa.gov rss feed
 """
 
 from application.interfaces.presenters.rsspresenter import RSSPresenter
 
 
-class KrebonSec:
+class CisaGov:
     """
-    KrebonSec usage class
+    Cisa.gov usage class
     """
 
     def __init__(self):
-        self.presenter = RSSPresenter("https://krebsonsecurity.com/feed/")
+        self.presenter = RSSPresenter("https://www.cisa.gov/news.xml")
 
     def get_title(self):
         """

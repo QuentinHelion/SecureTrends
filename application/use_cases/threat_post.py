@@ -1,17 +1,16 @@
 """
-Krebon security rss feed
+Threat post rss feed
 """
 
 from application.interfaces.presenters.rsspresenter import RSSPresenter
 
 
-class KrebonSec:
+class ThreatPost:
     """
-    KrebonSec usage class
+    ThreatPost usage class
     """
-
     def __init__(self):
-        self.presenter = RSSPresenter("https://krebsonsecurity.com/feed/")
+        self.presenter = RSSPresenter("https://threatpost.com/feed/")
 
     def get_title(self):
         """

@@ -45,3 +45,10 @@ class RSSPresenter:
         :return: entry summary
         """
         return entry.summary
+
+    @staticmethod
+    def get_entry_link(entry):
+        """
+        :return: entry summary
+        """
+        return entry.link
