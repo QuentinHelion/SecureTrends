@@ -33,4 +33,26 @@ class Feed:
         :param platform:
         :return:
         """
-        return self.db_controller.get_articles(platform=platform)
+        return self.db_controller.get_articles(
+            platform=platform
+        )
+
+    def get_feed_to(self, interval):
+        """
+        :param interval:
+        :return:
+        """
+        return self.db_controller.get_articles(
+            interval=interval
+        )
+
+    def get_feed_from_to(self, interval, platform):
+        """
+        :param interval:
+        :param platform:
+        :return:
+        """
+        return self.db_controller.get_articles(
+            interval=interval,
+            platform=platform
+        )

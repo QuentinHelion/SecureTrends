@@ -31,9 +31,24 @@ def feed():
     Return feed of last day
     """
     use_case = Feed()
+    if "platform" in request.args and "interval" in request.args:
+        return jsonify({
+            "result": use_case.get_feed_from_to(
+                interval=request.args["interval"],
+                platform=request.args["platform"]
+            )
+        })
     if "platform" in request.args:
         return jsonify({
-            "result": use_case.get_feed_from(request.args["platform"])
+            "result": use_case.get_feed_from(
+                platform=request.args["platform"]
+            )
+        })
+    if "interval" in request.args:
+        return jsonify({
+            "result": use_case.get_feed_to(
+                interval=request.args["interval"]
+            )
         })
     return jsonify({
         "result": use_case.get_feed()
