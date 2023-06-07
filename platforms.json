@@ -4,10 +4,6 @@
     "url": "https://krebsonsecurity.com/feed/"
   },
   {
-    "name": "HackerNews",
-    "url": "https://feeds.feedburner.com/TheHackersNews"
-  },
-  {
     "name": "BleepingComputer",
     "url": "https://www.bleepingcomputer.com/feed/"
   },
@@ -22,5 +18,9 @@
   {
     "name": "SecurityWeek",
     "url": "https://www.securityweek.com/feed/"
+  },
+  {
+    "name": "HackerNews",
+    "url": "https://feeds.feedburner.com/TheHackersNews"
   }
 ]

@@ -14,7 +14,7 @@ class JSONReader:
     def __init__(self, file_path):
         self.file_path = file_path
 
-    @property
+
     def read_json(self):
         """
         Read the JSON file
@@ -41,15 +41,3 @@ class JSONReader:
         if key in data:
             return data[key]
         return None
-
-
-
-# Specify the directory path
-directory_path = "./"
-
-# List the contents of the directory
-directory_contents = os.listdir(directory_path)
-
-# Print the directory contents
-for item in directory_contents:
-    print(item)

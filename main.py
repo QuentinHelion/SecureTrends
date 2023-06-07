@@ -87,8 +87,9 @@ def rss():
     Return rss feed title
     """
     use_case = ScanPlatforms("./platforms.json")
+    result = use_case.scan_all()
     return jsonify({
-        "result": "ok"
+        "result": result
     })
 
 

@@ -12,15 +12,27 @@ class ScanPlatforms:
     """
 
     def __init__(self, json):
-        self.json_reader = JSONReader(f"{json}")
-        platforms = self.json_reader.read_json()
-        platforms_array = []
+        json_reader = JSONReader(f"{json}")
+        platforms = json_reader.read_json()
+        self.platforms_array = []
         if platforms is not None:
             for platform in platforms:
-                print(platform)
-                platforms_array.append(
+                self.platforms_array.append(
                     PlatformRssController(
                         platform=platform["name"],
                         url=platform["url"]
                     )
                 )
+
+    def scan_all(self):
+        """
+        :return:
+        """
+        for platform in self.platforms_array:
+            try:
+                platform.save_feed()
+            except IndexError:
+                # Handle IndexError exception
+                print("IndexError occurred")
+                return False
+        return True
