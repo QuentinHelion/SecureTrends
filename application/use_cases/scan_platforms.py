@@ -36,3 +36,19 @@ class ScanPlatforms:
                 print("IndexError occurred")
                 return False
         return True
+
+    def scan_from(self, platform_title):
+        """
+        :return:
+        """
+        for platform in self.platforms_array:
+            if platform.platform == platform_title:
+                try:
+                    platform.save_feed()
+                except IndexError:
+                    # Handle IndexError exception
+                    print("IndexError occurred")
+                    return False
+            else:
+                return False
+        return True

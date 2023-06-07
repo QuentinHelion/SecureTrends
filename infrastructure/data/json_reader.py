@@ -2,7 +2,6 @@
 Json tools
 """
 
-import os
 import json
 
 
@@ -13,7 +12,6 @@ class JSONReader:
 
     def __init__(self, file_path):
         self.file_path = file_path
-
 
     def read_json(self):
         """
@@ -37,7 +35,7 @@ class JSONReader:
         :param key:
         :return:
         """
-        data = self.read_json
-        if key in data:
-            return data[key]
+        json_data = self.read_json()
+        if key in json_data:
+            return json_data[key]
         return None

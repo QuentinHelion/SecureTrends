@@ -2,13 +2,11 @@
 Main app file, all api route are declared there
 """
 from flask import Flask, jsonify, request
-from flask_cors import CORS
 from application.use_cases.save_article import SaveArticle
 from application.use_cases.feed import Feed
 from application.use_cases.scan_platforms import ScanPlatforms
 
 app = Flask(__name__)
-#CORS(app, resources={r"/*": {"origins": ["http://localhost"]}})
 
 
 @app.route('/ping', methods=['GET'])
@@ -87,7 +85,12 @@ def rss():
     Return rss feed title
     """
     use_case = ScanPlatforms("./platforms.json")
-    result = use_case.scan_all()
+    if "platform" in request.args:
+        result = use_case.scan_from(
+            platform_title=request.args["platform"]
+        )
+    else:
+        result = use_case.scan_all()
     return jsonify({
         "result": result
     })
