@@ -11,8 +11,8 @@ class PlatformRssController:
     PlatformRssController usage class
     """
 
-    def __init__(self, platform, link):
-        self.presenter = RSSPresenter(f"{link}")
+    def __init__(self, platform, url):
+        self.presenter = RSSPresenter(f"{url}")
         self.platform = platform
         self.save_article = SaveArticle()
 

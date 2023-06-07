@@ -3,13 +3,9 @@ Main app file, all api route are declared there
 """
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from application.use_cases.krebon_sec import KrebonSec
-from application.interfaces.controllers.platform_rss_controller import PlatformRssController
-from application.use_cases.hacker_news import HackerNews
-from application.use_cases.threat_post import ThreatPost
-from application.use_cases.security_week import SecurityWeek
 from application.use_cases.save_article import SaveArticle
 from application.use_cases.feed import Feed
+from application.use_cases.scan_platforms import ScanPlatforms
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost"]}})
@@ -90,59 +86,11 @@ def rss():
     """
     Return rss feed title
     """
-    use_case = KrebonSec()
+    use_case = ScanPlatforms("platforms.json")
     return jsonify({
-        "title": use_case.get_title(),
-        "entries": use_case.get_feed()
+        "result": "ok"
     })
 
-
-@app.route('/darkreading', methods=['GET'])
-def darkreading():
-    """
-    Return rss feed title
-    """
-    use_case = DarkReading()
-    return jsonify({
-        "title": use_case.get_title(),
-        "entries": use_case.get_feed()
-    })
-
-
-@app.route('/hackernews', methods=['GET'])
-def hackernews():
-    """
-    Return rss feed title
-    """
-    use_case = HackerNews()
-    return jsonify({
-        "title": use_case.get_title(),
-        "entries": use_case.get_feed()
-    })
-
-
-@app.route('/threatpost', methods=['GET'])
-def threatpost():
-    """
-    Return rss feed title
-    """
-    use_case = ThreatPost()
-    return jsonify({
-        "title": use_case.get_title(),
-        "entries": use_case.get_feed()
-    })
-
-
-@app.route('/securityweek', methods=['GET'])
-def securityweek():
-    """
-    Return rss feed title
-    """
-    use_case = SecurityWeek()
-    return jsonify({
-        "title": use_case.get_title(),
-        "entries": use_case.get_feed()
-    })
 
 
 if __name__ == '__main__':
