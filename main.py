@@ -8,7 +8,7 @@ from application.use_cases.feed import Feed
 from application.use_cases.scan_platforms import ScanPlatforms
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["http://localhost"]}})
+#CORS(app, resources={r"/*": {"origins": ["http://localhost"]}})
 
 
 @app.route('/ping', methods=['GET'])
@@ -86,12 +86,11 @@ def rss():
     """
     Return rss feed title
     """
-    use_case = ScanPlatforms("platforms.json")
+    use_case = ScanPlatforms("./platforms.json")
     return jsonify({
         "result": "ok"
     })
 
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

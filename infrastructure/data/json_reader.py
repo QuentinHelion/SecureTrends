@@ -45,7 +45,7 @@ class JSONReader:
 
 
 # Specify the directory path
-directory_path = "../../"
+directory_path = "./"
 
 # List the contents of the directory
 directory_contents = os.listdir(directory_path)
