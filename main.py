@@ -2,11 +2,14 @@
 Main app file, all api route are declared there
 """
 from flask import Flask, jsonify, request
-from application.use_cases.save_article import SaveArticle
+from apscheduler.schedulers.background import BackgroundScheduler
+import datetime
 from application.use_cases.feed import Feed
 from application.use_cases.scan_platforms import ScanPlatforms
 
 app = Flask(__name__)
+scheduler = BackgroundScheduler()
+scheduler.start()
 
 
 @app.route('/ping', methods=['GET'])
@@ -49,36 +52,6 @@ def feed():
     })
 
 
-@app.route('/test', methods=['GET'])
-def test():
-    """
-    Return rss feed title
-    """
-    use_case = SaveArticle()
-    return jsonify({
-        "result": use_case.save({
-            "title": "t_title_4",
-            "platform": "t_platform",
-            "link": "t_link",
-            "summary": "t_summary"
-        })
-    })
-
-
-@app.route('/rm', methods=['GET'])
-def remove_article():
-    """
-    Return rss feed title
-    """
-    use_case = SaveArticle()
-    return jsonify({
-        "result": use_case.remove({
-            "title": "t_title_4",
-            "platform": "t_platform"
-        })
-    })
-
-
 @app.route('/rss', methods=['GET'])
 def rss():
     """
@@ -96,5 +69,24 @@ def rss():
     })
 
 
+def scan_all_job():
+    """
+    scan all platform job
+    :return:
+    """
+    use_case = ScanPlatforms("./platforms.json")
+    use_case.scan_all()
+
+
+def schedule_task():
+    """
+    launch jobs
+    :return:
+    """
+    print("execute scan job")
+    scheduler.add_job(scan_all_job, 'cron', hour=0, minute=27)
+
+
 if __name__ == '__main__':
+    schedule_task()
     app.run(debug=True, host='0.0.0.0')
