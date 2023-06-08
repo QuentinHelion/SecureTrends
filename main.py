@@ -3,7 +3,6 @@ Main app file, all api route are declared there
 """
 from flask import Flask, jsonify, request
 from apscheduler.schedulers.background import BackgroundScheduler
-import datetime
 from application.use_cases.feed import Feed
 from application.use_cases.scan_platforms import ScanPlatforms
 
