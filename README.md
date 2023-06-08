@@ -23,14 +23,37 @@ docker-compose up
 docker-compose up -d
 ```
 
-## Confguration
+When server is started, you can run a first scan of all platform like this
+```
+http://myapp:5000/rss
+```
+
+## Usage
+
+To get feed, use this route
+```
+http://myapp:5000/feed
+```
+#### Custom research 
+
+Explication:
+You can custom your research with 2 parameter: **platform** and **interval**.
+- Platform correspond to title of website / platform, permit to get feed of specified source
+- Interval correspond to the age of the feed since today (in day)
+
+Example:
+- Platform: ``http://myapp:5000/feed?platform=CISA`` 
+- Interval: ``http://myapp:5000/feed?interval=3`` *(parameter is number of day)*
+- Cumulative: ``http://myapp:5000/feed?interval=3&platform=CISA``
+
+## Configuration
 
 #### Add Threat Intelligence platform
 In file ``platforms.json`` you can simple add new aray with basic informations:
 - name: name of website/platform 
 - url: **RSS url** of website/platform 
 
-Exemple:
+Example:
 ```
 {
   "name": "WebSite",

@@ -83,7 +83,7 @@ def schedule_task():
     :return:
     """
     print("execute scan job")
-    scheduler.add_job(scan_all_job, 'cron', hour=0, minute=27)
+    scheduler.add_job(scan_all_job, 'cron', hour=0, minute=30)
 
 
 if __name__ == '__main__':
