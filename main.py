@@ -56,7 +56,7 @@ def rss():
     """
     Return rss feed title
     """
-    use_case = ScanPlatforms("./platforms.json")
+    use_case = ScanPlatforms("platforms.json")
     if "platform" in request.args:
         result = use_case.scan_from(
             platform_title=request.args["platform"]
