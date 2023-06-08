@@ -16,7 +16,6 @@ class MySQLDatabaseGateway:
         self.user = user
         self.password = password
         self.connection = None
-        print("DB presenter OK")
 
     def connect(self):
         """
@@ -31,7 +30,6 @@ class MySQLDatabaseGateway:
                 password=self.password,
                 auth_plugin='mysql_native_password'
             )
-            print("Database connection ok")
         except mysql.connector.Error as error:
             print(f"Error connecting to MySQL: {error}")
 

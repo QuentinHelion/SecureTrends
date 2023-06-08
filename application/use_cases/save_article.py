@@ -27,14 +27,14 @@ class SaveArticle:
         :return:
         """
         if not self.db_controller.check_exist(
-                title=article["title"],
-                platform=article["platform"]
+                title=article["title"].replace("'", "\""),
+                platform=article["platform"].replace("'", "\"")
         ):
             return self.db_controller.save_article(
-                title=article["title"],
-                platform=article["platform"],
-                link=article["link"],
-                summary=article["summary"]
+                title=article["title"].replace("'", "\""),
+                platform=article["platform"].replace("'", "\""),
+                link=article["link"].replace("'", "\""),
+                summary=article["summary"].replace("'", "\"")
             )
         return False
 

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "KrebonSec",
+    "url": "https://krebsonsecurity.com/feed/"
+  },
+  {
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/feed/"
+  },
+  {
+    "name": "ThreatPost",
+    "url": "https://threatpost.com/feed/"
+  },
+  {
+    "name": "CISA",
+    "url": "https://www.cisa.gov/news.xml"
+  },
+  {
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/feed/"
+  },
+  {
+    "name": "HackerNews",
+    "url": "https://feeds.feedburner.com/TheHackersNews"
+  }
+]
