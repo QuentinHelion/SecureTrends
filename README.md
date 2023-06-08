@@ -22,3 +22,18 @@ docker-compose up
 # To run app in background add -d option
 docker-compose up -d
 ```
+
+## Confguration
+
+#### Add Threat Intelligence platform
+In file ``platforms.json`` you can simple add new aray with basic informations:
+- name: name of website/platform 
+- url: **RSS url** of website/platform 
+
+Exemple:
+```
+{
+  "name": "WebSite",
+  "url": "https://website.com/rss"
+}
+```
