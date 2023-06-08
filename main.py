@@ -56,7 +56,7 @@ def rss():
     """
     Return rss feed title
     """
-    use_case = ScanPlatforms("./platforms.json")
+    use_case = ScanPlatforms("platforms.json")
     if "platform" in request.args:
         result = use_case.scan_from(
             platform_title=request.args["platform"]
@@ -88,4 +88,4 @@ def schedule_task():
 
 if __name__ == '__main__':
     schedule_task()
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0', port=5000)

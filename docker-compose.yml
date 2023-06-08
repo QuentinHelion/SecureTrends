@@ -1,16 +1,19 @@
 version: '3'
 services:
-  app:
-    build: .
-    ports:
-      - 5000:5000
-    depends_on:
-      - mysql-server
-  mysql-server:
+  mysql:
     image: mysql:latest
+    restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=SecureTrends
-      - MYSQL_HOST=localhost
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: SecureTrends
+    ports:
+      - '3306:3306'
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql   # Mount the init.sql file
+  web:
+    build: .
+    restart: always
+    ports:
+      - '5000:5000'
+    depends_on:
+      - mysql

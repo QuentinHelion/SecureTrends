@@ -27,8 +27,7 @@ class MySQLDatabaseGateway:
                 port=self.port,
                 database=self.database,
                 user=self.user,
-                password=self.password,
-                auth_plugin='mysql_native_password'
+                password=self.password
             )
         except mysql.connector.Error as error:
             print(f"Error connecting to MySQL: {error}")
